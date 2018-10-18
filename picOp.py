@@ -20,3 +20,12 @@ im.imsave('pics/dotpic_masked.jpg', img)
 # print(mask0)
 # print(mask1)
 
+# save gray img
+
+def save_image_L(numpy_arr, name):
+    """
+    save gray image
+    input: numpy_arr is a numpy array of shape [w, h, 1]
+    """
+    gray_img = numpy_arr[..., 0]
+    misc.imsave(name, (gray_img*255).astype(np.uint8))
