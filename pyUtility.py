@@ -9,15 +9,14 @@ def num2str_with_width(number, width):
     return format_str%(number)
 
 
-def take_op_on_dir(path, operate, *operate_args, recursive_flag=False):
+def take_op_on_dir(path, operate, *operate_args, recursive=False):
     """take operation on target dir, recursively or not"""
     parents = os.listdir(path)
     for parent in parents:
         child = os.path.join(path, parent)
         if os.path.isdir(child):
-            if recursive_flag:
-                take_op_on_dir(child, operate, *operate_args, recursive_flag=recursive_flag)
-            else:
-                pass
+            if recursive:
+                take_op_on_dir(child, operate, *operate_args, recursive=recursive)
+
         else:
             operate(child, *operate_args)
