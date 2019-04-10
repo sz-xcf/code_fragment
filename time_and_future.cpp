@@ -10,6 +10,7 @@ using namespace std;
 long long find_the_answer();
 void do_other_stuff();
 void sysLocalTime(string s);
+long long GetSysTimeMicros(); 
 
 int	main()
 {
@@ -80,6 +81,13 @@ void sysLocalTime(string info)
         printf(" %04d-%02d-%02d %02d:%02d:%02d.%03ld\n", 
                         1900+p->tm_year, 1+p->tm_mon, p->tm_mday, p->tm_hour, p->tm_min, p->tm_sec, tv.tv_usec/1000);  
 }  
+
+// usec
+long long GetSysTimeMicros() { 
+        timeval tv;
+        gettimeofday(&tv, 0);
+        return (long long)tv.tv_sec * 1000000 + (long long)tv.tv_usec;
+}
 
 
 
